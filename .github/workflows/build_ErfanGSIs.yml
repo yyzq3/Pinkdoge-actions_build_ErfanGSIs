@@ -8,8 +8,6 @@ env:
   ROM_URL: https://hugeota.d.miui.com/20.9.10/miui_CRUX_20.9.10_706e29a5c8_10.0.zip
   ROM_NAME: MIUI
   BUILD_AB: true
-  BUILD_AONLY: true
-  ROM_AONLY: MIUI12_Aonly_9_20.6.18_MI6X_LKX.7z
   ROM_AB: miui_CRUX_20.9.10_706e29a5c8_10.0.7z
 
 jobs:
@@ -43,25 +41,7 @@ jobs:
               sudo chmod -R 777 ErfanGSIs
               cd ErfanGSIs
               sudo bash setup.sh
-       
-       - name: Download Stock Rom & Generate Aonly GSI
-         if: env.BUILD_AONLY == 'true'
-         run: sudo ./ErfanGSIs/url2GSI.sh -a $ROM_URL $ROM_NAME
-       
-       - name: 7z Aonly GSI
-         if: env.BUILD_AONLY == 'true'
-         run: 7za a -t7z -r $ROM_AONLY ErfanGSIs/output/*
-       
-       - name: Upload Aonly GSI to WeTransfer
-         if: env.BUILD_AONLY == 'true'
-         run: |
-              curl -sL https://git.io/file-transfer | sh
-              ./transfer wet $ROM_AONLY
-           
-       - name: Clear output
-         if: env.BUILD_AB == 'true'
-         run: sudo rm -rf ErfanGSIs/output/*
-         
+              
        - name: Download Stock Rom & Generate AB GSi
          run: sudo ./ErfanGSIs/url2GSI.sh $ROM_URL $ROM_NAME --ab
 
