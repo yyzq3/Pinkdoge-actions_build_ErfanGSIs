@@ -5,7 +5,7 @@ on:
     types: [started]
     
 env:
-  ROM_URL: https://hugeota.d.miui.com/20.9.10/miui_CRUX_20.9.10_706e29a5c8_10.0.zip
+  ROM_URL: https://hugeota.d.miui.com/20.8.25/miui_CRUX_20.8.25_7b2bc91c47_10.0.zip
   ROM_NAME: MIUI
   BUILD_AB: true
   ROM_AB: miui_CRUX_20.9.10_706e29a5c8_10.0.7z
