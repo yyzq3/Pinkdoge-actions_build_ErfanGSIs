@@ -1,14 +1,16 @@
-name: build_ErfanGSIs
+name: build——lkx_ErfanGSIs
 
 on:
   watch:
     types: [started]
     
 env:
-  ROM_URL: https://hugeota.d.miui.com/20.8.25/miui_CRUX_20.8.25_7b2bc91c47_10.0.zip
+  ROM_URL: https://alphaone-my.sharepoint.cn/personal/dontae_mqk_me/_layouts/15/download.aspx?UniqueId=45d70053-6090-4f89-a4ec-c27a0d9b1e3e&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvYWxwaGFvbmUtbXkuc2hhcmVwb2ludC5jbkAzYjFjODFiMS1kMTU2LTRhZjktYjE2OS1hZTA4MTI4YzAzOTYiLCJpc3MiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAiLCJuYmYiOiIxNjAxMzAyODc5IiwiZXhwIjoiMTYwMTMwNjQ3OSIsImVuZHBvaW50dXJsIjoiR3Z3MitnYXRvZkxwTnVSYnZFcXl3MGhYN1g3S00yV1hUNUtUc2FTL0hZZz0iLCJlbmRwb2ludHVybExlbmd0aCI6IjE0NCIsImlzbG9vcGJhY2siOiJUcnVlIiwiY2lkIjoiTTJObU5EWXpNMk10TkRsbE1pMDBPVFl5TFRobE0yUXROV0kwTmpKa09UZ3dZalV5IiwidmVyIjoiaGFzaGVkcHJvb2Z0b2tlbiIsInNpdGVpZCI6Ik5tSTNaVGRrTkdJdE5XWTROaTAwWlRsbExXSTBaR1V0TmpjNVpEZzBOV1ZtTW1OayIsImFwcF9kaXNwbGF5bmFtZSI6Ik9MQUlOREVYIiwic2lnbmluX3N0YXRlIjoiW1wia21zaVwiXSIsImFwcGlkIjoiMTY3MDJjMmItZDdjZS00MzE1LWIxMDUtNzhlZTRlMDYyOGE3IiwidGlkIjoiM2IxYzgxYjEtZDE1Ni00YWY5LWIxNjktYWUwODEyOGMwMzk2IiwidXBuIjoiZG9udGFlQG1xay5tZSIsInB1aWQiOiIxMDAzMzIzMEM1MzFBMUUyIiwiY2FjaGVrZXkiOiIwaC5mfG1lbWJlcnNoaXB8MTAwMzMyMzBjNTMxYTFlMkBsaXZlLmNvbSIsInNjcCI6Im15ZmlsZXMucmVhZCBhbGxmaWxlcy5yZWFkIG15ZmlsZXMud3JpdGUgYWxsZmlsZXMud3JpdGUgYWxscHJvZmlsZXMucmVhZCIsInR0IjoiMiIsInVzZVBlcnNpc3RlbnRDb29raWUiOm51bGx9.R1RtZVYvUEQ2N043d2c0bHVaMmFub25ySW9FN2NkK3hZUjYyNEVmZDFwVT0&ApiVersion=2.0
   ROM_NAME: MIUI
-  BUILD_AB: true
-  ROM_AB: miui_CRUX_20.9.10_706e29a5c8_10.0.7z
+  BUILD_AB: false
+  BUILD_AONLY: true
+  ROM_AONLY: MIUI12_Aonly_10_20.9.4_MI8SE_LKX.7z
+  ROM_AB: MIUI12_AB_10_10_20.9.4_MI8SE_LKX.7z
 
 jobs:
   build:
@@ -34,16 +36,35 @@ jobs:
             sudo -E apt-get -qq install git openjdk-8-jdk p7zip gzip
        
        - name: Clone ErfanGSI Source Code
-         run: git clone --recurse-submodules https://github.com/erfanoabdi/ErfanGSIs.git
+         run: git clone --recurse-submodules https://github.com/lkx-0686/ErfanGSIs.git
        
        - name: Setting up ErfanGSI requirements
          run: |
               sudo chmod -R 777 ErfanGSIs
               cd ErfanGSIs
               sudo bash setup.sh
-              
-       - name: Download Stock Rom & Generate AB GSi
-         run: sudo ./ErfanGSIs/url2GSI.sh $ROM_URL $ROM_NAME --ab
+       
+       - name: Download Stock Rom & Generate Aonly GSI
+         if: env.BUILD_AONLY == 'true'
+         run: sudo ./ErfanGSIs/url2GSI.sh -a $ROM_URL $ROM_NAME
+       
+       - name: 7z Aonly GSI
+         if: env.BUILD_AONLY == 'true'
+         run: 7za a -t7z -r $ROM_AONLY ErfanGSIs/output/*
+       
+       - name: Upload Aonly GSI to WeTransfer
+         if: env.BUILD_AONLY == 'true'
+         run: |
+              curl -sL https://git.io/file-transfer | sh
+              ./transfer wet $ROM_AONLY
+           
+       - name: Clear output
+         if: env.BUILD_AB == 'true'
+         run: sudo rm -rf ErfanGSIs/output/*
+         
+       - name: Download Stock Rom & Generate AB GSI
+         if: env.BUILD_AB == 'true'
+         run: sudo ./ErfanGSIs/url2GSI.sh -b $ROM_URL $ROM_NAME
 
        - name: 7z AB GSI
          if: env.BUILD_AB == 'true'
