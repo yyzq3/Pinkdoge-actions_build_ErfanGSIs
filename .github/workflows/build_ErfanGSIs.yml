@@ -5,7 +5,7 @@ on:
     types: [started]
     
 env:
-  ROM_URL: https://miui.bluedt.cn/show/国内稳定版(最新版)/Mi9Pro5G_MIUI12_V12.0.3.0_10.0_BlueHill_76754d486b.zip
+  ROM_URL: https://hugeota.d.miui.com/V12.0.4.0.QFXCNXM/miui_CRUX_V12.0.4.0.QFXCNXM_7592e70687_10.0.zip
   ROM_NAME: MIUI
   BUILD_AB: true
   BUILD_AONLY: false
