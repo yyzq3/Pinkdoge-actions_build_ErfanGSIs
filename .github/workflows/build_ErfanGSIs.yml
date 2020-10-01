@@ -5,7 +5,7 @@ on:
     types: [started]
     
 env:
-  ROM_URL: https://www.chenxingr.com:5001/fbdownload/Mi9Pro5G-20200929-20.9.29-10-b7189051-Simplicity-Auto.zip?dlink=%222fe5b08fe5a790e5a7902f5450313830332f4d693950726f35472d32303230303932392d32302e392e32392d31302d62373138393035312d53696d706c69636974792d4175746f2e7a6970%22&noCache=1601529781184&mode=download&stdhtml=false&SynoToken=Er9VzTZgSVNEw
+  ROM_URL: https://static.cowtransfer.com/f464ba7f-2c64-4aa6-af79-3e6af6399915%2Fbef311fb-f2d3-4fc7-87cc-510833344e2b%2FMi9Pro5G-20200929-20.9.29-10-b7189051-Simplicity-Auto.zip?t-s=1601534570134&t-c=e4260dc6-2f1c-437a-9ac5-a132d069f69c&attname=Mi9Pro5G-20200929-20.9.29-10-b7189051-Simplicity-Auto.zip
   ROM_NAME: MIUI
   BUILD_AB: true
   BUILD_AONLY: false
