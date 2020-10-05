@@ -5,11 +5,11 @@ on:
     types: [started]
     
 env:
-  ROM_URL: https://static.cowtransfer.com/f464ba7f-2c64-4aa6-af79-3e6af6399915%2Fbef311fb-f2d3-4fc7-87cc-510833344e2b%2FMi9Pro5G-20200929-20.9.29-10-b7189051-Simplicity-Auto.zip?t-s=1601534570134&t-c=e4260dc6-2f1c-437a-9ac5-a132d069f69c&attname=Mi9Pro5G-20200929-20.9.29-10-b7189051-Simplicity-Auto.zip
-  ROM_NAME: MIUI
+  ROM_URL: https://static.cowtransfer.com/f464ba7f-2c64-4aa6-af79-3e6af6399915%2F7bcb7ea3-8fa9-4559-be43-dc1e864b9930%2FOnePlus7ProNROxygen_21_OTA_023_all_2007081424_2926c663b19.zip?t-s=1601868887628&t-c=e554441a-cfdd-4ab6-b580-55e78b4ed7a0&attname=OnePlus7ProNROxygen_21_OTA_023_all_2007081424_2926c663b19.zip
+  ROM_NAME: OxygenOS
   BUILD_AB: true
   BUILD_AONLY: false
-  ROM_AB: MIUI12_crux_pro.7z
+  ROM_AB: oxygen.7z
 
 jobs:
   build:
