@@ -9,7 +9,7 @@ env:
   ROM_NAME: MIUI
   BUILD_AB: true
   BUILD_AONLY: false
-  ROM_AB: miui12.7z
+  ROM_AB: MIUI12onMI10.7z
 
 jobs:
   build:
