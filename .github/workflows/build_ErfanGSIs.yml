@@ -5,11 +5,11 @@ on:
     types: [started]
     
 env:
-  ROM_URL: https://static.cowtransfer.com/f464ba7f-2c64-4aa6-af79-3e6af6399915%2F7bcb7ea3-8fa9-4559-be43-dc1e864b9930%2FOnePlus7ProNROxygen_21_OTA_023_all_2007081424_2926c663b19.zip?t-s=1601868887628&t-c=e554441a-cfdd-4ab6-b580-55e78b4ed7a0&attname=OnePlus7ProNROxygen_21_OTA_023_all_2007081424_2926c663b19.zip
-  ROM_NAME: OxygenOS
+  ROM_URL: https://bigota.d.miui.com/V12.0.11.0.QJBCNXM/miui_UMI_V12.0.11.0.QJBCNXM_03afa44d87_10.0.zip
+  ROM_NAME: MIUI
   BUILD_AB: true
   BUILD_AONLY: false
-  ROM_AB: oxygen.7z
+  ROM_AB: miui12.7z
 
 jobs:
   build:
@@ -35,7 +35,7 @@ jobs:
             sudo -E apt-get -qq install git openjdk-8-jdk p7zip gzip
        
        - name: Clone ErfanGSI Source Code
-         run: git clone --recurse-submodules https://github.com/lkx-0686/ErfanGSIs.git
+         run: git clone --recurse-submodules https://github.com/yyzq2/ErfanGSIs.git
        
        - name: Setting up ErfanGSI requirements
          run: |
