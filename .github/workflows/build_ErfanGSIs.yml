@@ -5,11 +5,11 @@ on:
     types: [started]
     
 env:
-  ROM_URL: https://bigota.d.miui.com/20.11.25/miui_CRUX_20.11.25_6e47c9a303_10.0.zip
+  ROM_URL: https://bigota.d.miui.com/20.12.28/miui_LAURUS_20.12.28_27a143ce05_10.0.zip
   ROM_NAME: MIUI
   BUILD_AB: true
   BUILD_AONLY: false
-  ROM_AB: MIUI12_MI9Pro_AB.7z
+  ROM_AB: MIUI12_MICC9E_AB.7z
 
 jobs:
   build:
