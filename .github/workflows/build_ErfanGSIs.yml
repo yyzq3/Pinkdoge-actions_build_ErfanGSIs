@@ -7,9 +7,9 @@ on:
 env:
   ROM_URL: https://bigota.d.miui.com/20.3.26/miui_PYXIS_20.3.26_857cc8af87_10.0.zip
   ROM_NAME: MIUI
-  BUILD_AB: true
-  BUILD_AONLY: false
-  ROM_AB: MIUI_AB.7z
+  BUILD_AB: false
+  BUILD_AONLY: true
+  ROM_AONLY: MIUI_AONLY.7z
 
 jobs:
   build:
